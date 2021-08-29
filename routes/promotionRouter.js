@@ -1,7 +1,7 @@
 const express = require('express');
-const campsiteRouter = express.Router();
+const promotionRouter = express.Router();
 
-campsiteRouter.route('/')
+promotionRouter.route('/')
 .all((req, res, next) => {
   res.statusCode = 200;
   res. setHeader('Content-Type', 'text/html');
@@ -21,26 +21,26 @@ campsiteRouter.route('/')
   res.end('Deleting all campsites');
 });
 
-campsiteRouter.route('/:campsiteId')
+promotionRouter.route('/:promotionId')
 .all((req, res, next) => {
   res.statusCode = 200;
   res. setHeader('Content-Type', 'text/html');
   next();
 })
 .get((req, res) => {
-  res.end(`Will send details of the campsite: ${req.params.campsiteId} to you`);
+  res.end(`Will send details of the campsite: ${req.params.promotionId} to you`);
 })
 .post((req, res) => {
   res.statusCode = 403;
-  res.end(`POST operation not supported on /campsites/${req.params.campsiteId}`);
+  res.end(`POST operation not supported on /campsites/${req.params.promotionId}`);
 })
 .put((req, res) => {
-  res.write(`Updating the campsite: ${req.params.campsiteId}\n`)
+  res.write(`Updating the campsite: ${req.params.promotionId}\n`)
   res.end(`Will update the campsite: ${req.body.name} 
       with description: ${req.body.description}`);
 })
 .delete((req, res) => {
-  res.end(`Deleting campsite: ${req.params.campsiteId}`);
+  res.end(`Deleting campsite: ${req.params.promotionId}`);
 });
 
-module.exports = campsiteRouter;
+module.exports = promotionRouter;
